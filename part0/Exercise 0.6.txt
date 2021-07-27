@@ -1,0 +1,21 @@
+title User Sends Note to Notes SPA
+
+note over browser:
+User enters a new note on the input 
+form and then clicks the submit  button 
+end note
+note over browser:
+Spa.js prevents form sending, 
+add the new note to the list, 
+re renders the list and then 
+sends an AJAX POST to update 
+data.json  with the new note
+
+end note
+browser->server: XHR AJAX POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+note over server:
+server receives the new note as
+a json document and save it to
+data.json
+end note
+server-->browser: HTTP 201 Reports Document Created

@@ -1,0 +1,32 @@
+title User Sends Note to Notes App
+
+note over browser:
+User enters a new note on the input 
+form and then clicks the submit  button 
+end note
+
+browser->server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note
+note over server:
+servers receive the new note, 
+writes it to the data.json, and
+then redirects user to notes page
+end note
+server-->browser: HTTP 302 Redirect to /notes
+note over browser:
+The browser starts the process 
+over again to retrive the notes 
+main page and all their resources
+end note
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/notes
+server-->browser: HTML-code
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+server-->browser: main.css
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.js
+server-->browser: main.js
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+server-->browser: [{ content: "New Note", date: "2021-07-27" }, ...]
+
+note over browser:
+browser renders the page with the
+new note added to it
+end note
